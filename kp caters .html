@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KP Caters | Taste Beyond Expectation</title>
+    <link rel="stylesheet" href="kp caters 2.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">KP <span>Caters</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#menu">Menu Card</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>KP CATERS</h1>
+        <div class="tagline">Taste Beyond Expectation • Good Food Brings People Together</div>
+        <p>Premium Catering For All Occasions — Weddings, Engagements, Birthday Parties, Corporate Events & Private Functions.</p>
+        <a href="#contact" class="btn">Book Now: 7095251121</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">Welcome to KP Caters</h2>
+        <p class="about-text">
+            At KP Caters, we bring authentic flavors, traditional recipes, and premium culinary expertise to your special occasions. Click through our menu below to assemble your custom event catering package.
+        </p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container services-container">
+            <h2 class="section-title">Catering For All Occasions</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Weddings & Engagements</h3>
+                    <p>Grand multi-course menus, Hyderabadi Dum Biryani, authentic Arabian spreads, and live dessert counters.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Corporate Events</h3>
+                    <p>Professional food service, customized buffets, and executive catering for corporate gatherings.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Birthdays & Private Functions</h3>
+                    <p>Tailored menus featuring Chinese starters, South Indian tiffins, street style bites, and premium ice creams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="container">
+        <h2 class="section-title">Select Your Menu Items</h2>
+        <p class="instruction-text">
+            💡 <strong>Click on any dish</strong> to add or remove it from your event catering proposal.
+        </p>
+
+        <div class="menu-filters">
+            <button class="filter-btn active" onclick="filterMenu('all', event)">All Items</button>
+            <button class="filter-btn" onclick="filterMenu('hyderabadi', event)">Hyderabadi Special</button>
+            <button class="filter-btn" onclick="filterMenu('arabian', event)">Arabian Dishes</button>
+            <button class="filter-btn" onclick="filterMenu('mutton', event)">Mutton Special</button>
+            <button class="filter-btn" onclick="filterMenu('chicken', event)">Chicken Special</button>
+            <button class="filter-btn" onclick="filterMenu('mughali', event)">Mughali Special</button>
+            <button class="filter-btn" onclick="filterMenu('chinese', event)">Chinese Special</button>
+            <button class="filter-btn" onclick="filterMenu('south-indian', event)">South Indian</button>
+            <button class="filter-btn" onclick="filterMenu('sweets', event)">Sweets</button>
+            <button class="filter-btn" onclick="filterMenu('icecreams', event)">Ice Creams & Desserts</button>
+        </div>
+
+        <div class="menu-grid" id="menuContainer">
+            <!-- Dynamically Populated by JavaScript -->
+        </div>
+
+        <!-- Dynamic Selection Summary Tray -->
+        <div class="selection-summary-bar" id="summaryBar">
+            <div class="selection-summary-info">
+                <strong>Selected Items: <span id="selectedCount">0</span></strong>
+                <p>Select items above to build your custom menu</p>
+            </div>
+            <a href="#contact" class="btn btn-review">Review Booking Form 👇</a>
+        </div>
+    </section>
+
+    <!-- Contact & Booking Section -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Book KP Caters</h2>
+
+        <div class="booking-info">
+            <p><strong>For Booking Call: 7095251121</strong></p>
+            <p><small>Advance Payment: depends on your event details and half of your total bill</small></p>
+            <p><small>Full Payment: Full payment before one day of the event date/day</small></p>
+        </div>
+
+        <form class="contact-form" onsubmit="handleFormSubmit(event)">
+            
+            <div class="pricing-calculator-card">
+                <h3>Your Selected Menu Summary</h3>
+                <div id="selectedItemsChips" class="selected-tags-container">
+                    <span class="empty-tray-text">No dishes selected yet. Click items in the menu grid above to add them here.</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required placeholder="7095251121">
+            </div>
+            <div class="form-group">
+                <label for="event-type">Event Type</label>
+                <select id="event-type" required>
+                    <option value="">Select Event Type</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="engagement">Engagement</option>
+                    <option value="birthday">Birthday Party</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="private">Private Function</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="guests">Estimated Guest Count</label>
+                <input type="number" id="guests" min="10" required placeholder="100">
+            </div>
+            <div class="form-group">
+                <label for="message">Selected Items & Specific Requirements</label>
+                <textarea id="message" rows="5" readonly placeholder="Selected menu items will appear here automatically..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-full">Submit Booking Enquiry</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 KP Caters. Taste Beyond Expectation.</p>
+        <p>For Bookings Call: <strong>7095251121</strong> | Authentic Hyderabadi specialties and Arabian Taste in Every Bite</p>
+    </footer>
+
+    <!-- JavaScript Data and Selection Logic -->
+    <script>
+        const fullMenu = [
+            // Hyderabadi Special
+            { id: 1, name: "Hyderabadi Dum Biryani", category: "hyderabadi", group: "Hyderabadi Special" },
+            { id: 2, name: "Bagara Baingan", category: "hyderabadi", group: "Hyderabadi Special" },
+            { id: 3, name: "Mirchi Ka Salan", category: "hyderabadi", group: "Hyderabadi Special" },
+            { id: 4, name: "Kachumber Salad", category: "hyderabadi", group: "Hyderabadi Special" },
+            { id: 5, name: "Gongura Mutton / Chicken", category: "hyderabadi", group: "Hyderabadi Special" },
+
+            // Arabian Dishes
+            { id: 6, name: "Chicken Kabsa", category: "arabian", group: "Chicken Arabian Dishes" },
+            { id: 7, name: "Chicken Mandi", category: "arabian", group: "Chicken Arabian Dishes" },
+            { id: 8, name: "Chicken Madhbi", category: "arabian", group: "Chicken Arabian Dishes" },
+            { id: 9, name: "Chicken Jareesh", category: "arabian", group: "Chicken Arabian Dishes" },
+            { id: 10, name: "Chicken Majboos", category: "arabian", group: "Chicken Arabian Dishes" },
+            { id: 11, name: "Chicken Harees", category: "arabian", group: "Chicken Arabian Dishes" },
+            { id: 12, name: "Chicken Shawarma", category: "arabian", group: "Chicken Arabian Dishes" },
+            { id: 13, name: "Chicken Arabic Rice", category: "arabian", group: "Chicken Arabian Dishes" },
+            { id: 14, name: "Mutton Kabsa", category: "arabian", group: "Mutton Arabian Dishes" },
+            { id: 15, name: "Mutton Mandi", category: "arabian", group: "Mutton Arabian Dishes" },
+            { id: 16, name: "Mutton Madhbi", category: "arabian", group: "Mutton Arabian Dishes" },
+            { id: 17, name: "Mutton Jareesh", category: "arabian", group: "Mutton Arabian Dishes" },
+            { id: 18, name: "Mutton Majboos", category: "arabian", group: "Mutton Arabian Dishes" },
+            { id: 19, name: "Mutton Harees", category: "arabian", group: "Mutton Arabian Dishes" },
+            { id: 20, name: "Mutton Dajaj (with mutton gravy)", category: "arabian", group: "Mutton Arabian Dishes" },
+            { id: 21, name: "Mutton Shawarma", category: "arabian", group: "Mutton Arabian Dishes" },
+
+            // Mutton Specials
+            { id: 22, name: "Mutton All Fry Items", category: "mutton", group: "Mutton Specials" },
+            { id: 23, name: "Mutton All Gravy Items", category: "mutton", group: "Mutton Specials" },
+            { id: 24, name: "Spl Mutton Biryani", category: "mutton", group: "Mutton Specials" },
+            { id: 25, name: "Spl Mutton Harees", category: "mutton", group: "Mutton Specials" },
+            { id: 26, name: "Mutton Currys (All Items)", category: "mutton", group: "Mutton Specials" },
+
+            // Chicken Specials
+            { id: 27, name: "Chicken All Fry Items", category: "chicken", group: "Chicken Specials" },
+            { id: 28, name: "Chicken All Gravy Items", category: "chicken", group: "Chicken Specials" },
+            { id: 29, name: "Spl Chicken Biryani", category: "chicken", group: "Chicken Specials" },
+            { id: 30, name: "Spl Chicken Harees", category: "chicken", group: "Chicken Specials" },
+            { id: 31, name: "Fish Fry All Items", category: "chicken", group: "Seafood & Specials" },
+            { id: 32, name: "Prawns Fry All Items", category: "chicken", group: "Seafood & Specials" },
+            { id: 33, name: "Teater Fry All Items", category: "chicken", group: "Seafood & Specials" },
+            { id: 34, name: "Bater Fry All Items", category: "chicken", group: "Seafood & Specials" },
+
+            // Mughali Special
+            { id: 35, name: "Mughlai Dishes (All Items)", category: "mughali", group: "Mughali Special" },
+            { id: 36, name: "Korma", category: "mughali", group: "Mughali Special" },
+            { id: 37, name: "Handi Special", category: "mughali", group: "Mughali Special" },
+            { id: 38, name: "Tandoori Chicken / Kebabs", category: "mughali", group: "Mughali Special" },
+
+            // Chinese Special
+            { id: 39, name: "Veg Manchurian", category: "chinese", group: "Chinese Special" },
+            { id: 40, name: "Chicken Manchurian", category: "chinese", group: "Chinese Special" },
+            { id: 41, name: "Veg Fried Rice", category: "chinese", group: "Chinese Special" },
+            { id: 42, name: "Chicken Fried Rice", category: "chinese", group: "Chinese Special" },
+            { id: 43, name: "Veg Fried Rice Special", category: "chinese", group: "Chinese Special" },
+            { id: 44, name: "Chicken Noodles", category: "chinese", group: "Chinese Special" },
+            { id: 45, name: "Veg Noodles", category: "chinese", group: "Chinese Special" },
+
+            // South Indian
+            { id: 46, name: "Idli", category: "south-indian", group: "South Indian Special" },
+            { id: 47, name: "Dosa / Masala Dosa", category: "south-indian", group: "South Indian Special" },
+            { id: 48, name: "Uttapam", category: "south-indian", group: "South Indian Special" },
+            { id: 49, name: "Vada", category: "south-indian", group: "South Indian Special" },
+            { id: 50, name: "Pongal", category: "south-indian", group: "South Indian Special" },
+            { id: 51, name: "Sambar & Chutney", category: "south-indian", group: "South Indian Special" },
+
+            // Sweets
+            { id: 52, name: "Jalebi", category: "sweets", group: "Sweet Special" },
+            { id: 53, name: "Laddu / Raffi", category: "sweets", group: "Sweet Special" },
+            { id: 54, name: "Kaju Katli", category: "sweets", group: "Sweet Special" },
+            { id: 55, name: "Rasgulla", category: "sweets", group: "Sweet Special" },
+            { id: 56, name: "Mysore Pak", category: "sweets", group: "Sweet Special" },
+            { id: 57, name: "Double Ka Meetha", category: "sweets", group: "Sweet Special" },
+
+            // Ice Creams & Desserts
+            { id: 58, name: "Vanilla / Chocolate / Strawberry Ice Cream", category: "icecreams", group: "Traditional Flavours" },
+            { id: 59, name: "Butterscotch & Pista Ice Cream", category: "icecreams", group: "Traditional Flavours" },
+            { id: 60, name: "Kesar Pista & Black Currant", category: "icecreams", group: "Traditional Flavours" },
+            { id: 61, name: "Mango & Sitaphal Ice Cream", category: "icecreams", group: "Fruit Flavours" },
+            { id: 62, name: "Anjeer / Pineapple / Lychee Ice Cream", category: "icecreams", group: "Fruit Flavours" },
+            { id: 63, name: "Fruit & Cream Ice Cream", category: "icecreams", group: "Fruit Flavours" },
+            { id: 64, name: "Dry Fruits & Kaju Ice Cream", category: "icecreams", group: "Dry Fruit Flavours" },
+            { id: 65, name: "Anjeer Dry Fruit & Khajoor Kaju", category: "icecreams", group: "Dry Fruit Flavours" },
+            { id: 66, name: "Rabdi & Rajbhog Ice Cream", category: "icecreams", group: "Dry Fruit Flavours" },
+            { id: 67, name: "Chocolate Fudge & Choco Chip", category: "icecreams", group: "Chocolate Specials" },
+            { id: 68, name: "Chocolate Brownie & Almond", category: "icecreams", group: "Chocolate Specials" },
+            { id: 69, name: "Cookies & Cream & Choco Crunch", category: "icecreams", group: "Chocolate Specials" },
+            { id: 70, name: "Mango Mastani & GulKand", category: "icecreams", group: "Premium Indian Flavours" },
+            { id: 71, name: "Kulfi / Malai / Kesar / Pista / Rabdi Kulfi", category: "icecreams", group: "Premium Indian Flavours" },
+            { id: 72, name: "Rose & Pan Ice Cream", category: "icecreams", group: "Premium Indian Flavours" },
+            { id: 73, name: "Royal Falooda & Fruit Falooda", category: "icecreams", group: "Special Desserts" },
+            { id: 74, name: "Kulfi Falooda & Ice Cream Sundae", category: "icecreams", group: "Special Desserts" },
+            { id: 75, name: "Brownie with Ice Cream", category: "icecreams", group: "Special Desserts" },
+            { id: 76, name: "Chocolate & Dry Fruit Sundae", category: "icecreams", group: "Special Desserts" }
+        ];
+
+        let selectedItemIds = new Set();
+        let activeCategory = 'all';
+
+        function toggleSelectItem(id) {
+            if (selectedItemIds.has(id)) {
+                selectedItemIds.delete(id);
+            } else {
+                selectedItemIds.add(id);
+            }
+            updateUI();
+        }
+
+        function renderMenu(items) {
+            const container = document.getElementById('menuContainer');
+            
+            if (items.length === 0) {
+                container.innerHTML = `<p style="grid-column: 1/-1; text-align: center;">No menu items found.</p>`;
+                return;
+            }
+
+            const groups = {};
+            items.forEach(item => {
+                if (!groups[item.group]) groups[item.group] = [];
+                groups[item.group].push(item);
+            });
+
+            let html = '';
+            for (const groupName in groups) {
+                html += `<div class="menu-category-title">${groupName}</div>`;
+                groups[groupName].forEach(item => {
+                    const isSelected = selectedItemIds.has(item.id);
+                    html += `
+                        <div class="menu-item ${isSelected ? 'selected' : ''}" onclick="toggleSelectItem(${item.id})">
+                            <span class="menu-item-icon">${isSelected ? '✓' : '❖'}</span>
+                            <span class="menu-item-name">${item.name}</span>
+                            <span class="menu-item-badge">${isSelected ? 'Selected' : 'Add +'}</span>
+                        </div>
+                    `;
+                });
+            }
+
+            container.innerHTML = html;
+        }
+
+        function filterMenu(category, event) {
+            activeCategory = category;
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (event) event.target.classList.add('active');
+
+            if (category === 'all') {
+                renderMenu(fullMenu);
+            } else {
+                const filtered = fullMenu.filter(item => item.category === category);
+                renderMenu(filtered);
+            }
+        }
+
+        function updateUI() {
+            if (activeCategory === 'all') {
+                renderMenu(fullMenu);
+            } else {
+                renderMenu(fullMenu.filter(item => item.category === activeCategory));
+            }
+
+            document.getElementById('selectedCount').innerText = selectedItemIds.size;
+
+            const selectedObjects = fullMenu.filter(item => selectedItemIds.has(item.id));
+            
+            const chipsContainer = document.getElementById('selectedItemsChips');
+            if (selectedObjects.length === 0) {
+                chipsContainer.innerHTML = `<span class="empty-tray-text">No dishes selected yet. Click items in the menu grid above to add them here.</span>`;
+            } else {
+                chipsContainer.innerHTML = selectedObjects.map(item => `
+                    <div class="tag-chip">
+                        ${item.name}
+                        <span onclick="event.stopPropagation(); toggleSelectItem(${item.id})">✕</span>
+                    </div>
+                `).join('');
+            }
+
+            const textarea = document.getElementById('message');
+            if (selectedObjects.length > 0) {
+                textarea.value = "Selected Items (" + selectedObjects.length + "):\n- " + selectedObjects.map(i => i.name).join("\n- ");
+            } else {
+                textarea.value = "";
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            if (selectedItemIds.size === 0) {
+                alert("Please select at least one item from the menu grid before submitting.");
+                return;
+            }
+            alert(`Thank you for choosing KP Caters!\nYour booking inquiry for ${selectedItemIds.size} menu items has been recorded.\n\nCall us directly at 7095251121 to finalize your order.`);
+            selectedItemIds.clear();
+            updateUI();
+            e.target.reset();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu(fullMenu);
+        });
+    </script>
+</body>
+</html>
